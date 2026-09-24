@@ -50,12 +50,14 @@ class CourierController extends Controller
     public function update(UpdateCourierRequest $request, Courier $courier): JsonResponse
     {
         $courier->update($request->validated());
+
         return response()->json($courier->refresh());
     }
 
     public function destroy(Courier $courier): Response
     {
         $courier->delete();
+
         return response()->noContent();
     }
 }
